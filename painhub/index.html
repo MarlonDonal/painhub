@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .body_container {
+        width: 100%;
+        /* height: 100vh; */
+        background-color: #000000;
+        max-width: 600px;
+        margin: auto;
+        position: relative;
+    }
+    
+    .pain {
+        background-color: #808080;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: space-evenly;
+        border: bold;
+    }
+    
+    body {
+        background: url('pc.png');
+        /* background-repeat: no-repeat; */
+    }
+    
+    .pain_text {
+        font-size: 40px;
+        font-style: arial;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .information_container {
+        display: flex;
+        background-color: black;
+        /* border-color: rgb(252, 194, 4); */
+        height: 40px;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
+    .information {
+        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        cursor: pointer;
+        border-left: #fff 1px solid;
+        border-right: #fff 1px solid;
+    }
+    
+    .play {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .serching {
+        outline: none;
+        height: 30px;
+        border-radius: 6px;
+        border: none;
+    }
+    
+    .serching:before {
+        content: "";
+        background: #0170f0;
+        transform: scaleX(0);
+        transform-origin: center;
+        transform-origin: left;
+        transition: transform .25s;
+    }
+    
+    .serching:focus-within::before {
+        transform: scale(1);
+    }
+    
+    .serching:active {
+        transform: scale(0.9);
+        transition: all 0.9s;
+    }
+    
+    .form {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 40px;
+        padding: 6px;
+        align-items: center;
+    }
+    
+    .liveperformance {
+        color: black;
+        font-size: 14px;
+        align-items: center;
+    }
+    
+    .button_container {
+        background-color: inherit;
+        border: none;
+    }
+    
+    .button_container:active {
+        transform: scale(0.9);
+    }
+    
+    .live_icons {
+        width: 24px;
+    }
+    
+    .Hd {
+        width: 24px;
+    }
+    
+    button {
+        height: 40px;
+        background-color: #bdbdbd;
+        border: none;
+        padding: 8px;
+    }
+    
+    .svgwatchlive {
+        display: flex;
+        height: 30px;
+        width: 150px;
+        border-radius: 6px;
+        gap: 14px;
+        align-items: center;
+        background-color: #ffab40;
+        cursor: pointer;
+    }
+    
+    .svgwatchlive:active {
+        transform: scale(0.9);
+        transition: all 0.9s;
+    }
+    
+    .burger {
+        color: #ffab40;
+        width: 24px;
+    }
+    
+    .burger:active {
+        transform: scale(0.9);
+        transition: all 0.9s;
+    }
+    
+    .picture_in_comp_E {
+        border: #ffab40 solid 1px;
+    }
+    
+    .picture_in_comp_E:active {
+        transform: scale(0.9);
+        transition: all 0.9s;
+    }
+    
+    .computer_picture {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .gapsgods {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 95%;
+        margin: auto;
+    }
+    
+    .text_in_computer:active {
+        transform: scale(0.9);
+        transition: all 0.9s;
+    }
+    
+    .text_in_computer {
+        color: rgba(255, 255, 255, 0.76);
+    }
+    
+    .videos {
+        display: flex;
+        width: 100%;
+    }
+    
+    .cite {
+        width: 95%;
+        background-color: #ffab40;
+        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .cite:active {
+        transform: scale(0.9);
+        transition: all 0.9s;
+    }
+    
+    .menu_options {
+        display: flex;
+        gap: 2px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .information_options {
+        background-color: #ffab40;
+        height: 24px;
+        border-radius: 4px;
+    }
+    
+    .information_options:active {
+        transform: scale(0.9);
+        transition: all 0.9s;
+    }
+    
+    .youtuber_container {
+        height: 100vh;
+        width: 100%;
+        background-color: #000000;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .TEXT_YOUTUBER {
+        color: #fff;
+        text-align: center;
+        top: 10px;
+        position: absolute;
+        font-size: 24px;
+    }
+    
+    .button_back {
+        position: absolute;
+        top: 40px;
+        left: 5%;
+        border-radius: 2px;
+        height: 30px;
+        background-color: #ffab40;
+    }
+    
+    .button_back:active {
+        transform: scale(0.9);
+        transition: all 0.9s;
+    }
+    
+    .button_back:hover {
+        background-color: #2c3e50;
+    }
+    
+    .chooox_precontainer {
+        border: #d48300 1px solid;
+    }
+    
+    .meaningofthecomputer_container {
+        display: none;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: url('john.png');
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .computer_etc {
+        font-size: 30px;
+        color: #000000;
+        margin-left: 10px;
+    }
+    
+    .BACKBUTTON {
+        width: 100px;
+        height: 30px;
+        background-color: green;
+        color: #000000;
+        font-size: 16px;
+        border: #000000 1px solid;
+        position: absolute;
+        top: 1.6cm;
+        left: 1.1cm;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    
+    .comp_e {
+        color: #ffab40
+    }
+    
+    @keyframes BACKBUTTON {}
+    
+    @media only screen and (max-width: 600px) {
+        .pain {
+            width: 100%;
+            height: 50px;
+        }
+        .information_container {
+            width: 100%;
+            height: 40px;
+        }
+    }
+</style>
+
+<body>
+    <div class="body_container">
+        <div class="pain">
+            <p class="pain_text">ACHIEVEMENTS</p>
+        </div>
+        <div class="information_container">
+            <p class="information">MORE INFO</p>
+            <p class="information">FOLLOW</p>
+            <button class="information_options">UPLOAD</button>
+            <button class="button_container">
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" fill="currentColor" class="burger" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+            </button>
+        </div>
+        <div class="form">
+            <button class="svgwatchlive" onclick="svgwatchlive_variables(svgwatchlive_functions[0],'flex')">
+          <svg class="Hd" viewBox="0 0 16 16">
+            <path
+              d="M10.53 5.968h-.843v4.06h.843c1.117 0 1.622-.667 1.622-2.02 0-1.354-.51-2.04-1.622-2.04z"
+            />
+            <path
+              d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm5.396 3.001V11H6.209V8.43H3.687V11H2.5V5.001h1.187v2.44h2.522V5h1.187zM8.5 11V5.001h2.188c1.824 0 2.685 1.09 2.685 2.984C13.373 9.893 12.5 11 10.69 11H8.5z"
+            />
+          </svg>
+          <p class="liveperformance">Watch live</p>
+        </button>
+
+            <input class="serching" type="text" placeholder="ｓｅａｒｃｈ" />
+        </div>
+        <div class="gapsgods">
+            <div class="computer_picture">
+                <H1 class="text_in_computer">COMPUTER <span style="color:#d48300">ENGINEERING</span></H1>
+                <img class=" picture_in_comp_E" onclick="imageof_computer()" src="computer.png" alt="">
+            </div>
+            <div class="computer_picture">
+                <h1 class="text_in_computer"> <span style="color:#d48300">YES</span>! WE DID IT</h1>
+                <img class="picture_in_comp_E" src="graduate.png" alt="">
+            </div>
+
+
+        </div>
+        <div class="menu_options">
+            <button class="cite">"WE DO ORDINARY WELL" "EXTRAORDINARY WELL"</button>
+        </div>
+        <div class="youtuber_container">
+            <h1 class="TEXT_YOUTUBER">COMPUTER</h1>
+            <iframe class="chooox_precontainer" width="90%" height="315" src="https://www.youtube.com/embed/QZwneRb-zqA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <iframe class="chooox_precontainer" width="90%" height="315" src="https://www.youtube.com/embed/m8ZoxzX0hro" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <button class="button_back" onclick="svgwatchlive_variables(svgwatchlive_functions[0],'none' )">BACK</button>
+
+        </div>
+        <diV class="meaningofthecomputer_container">
+            <button class="BACKBUTTON" onclick="buttonogback()">BACK</button>
+            <h1 class="comp_e">COMPUTER ENGINEERING</h1>
+            <p class="computer_etc">Computer engineering is defined as the discipline that embodies the science and technology of design, construction, implementation, and maintenance of software and hardware components of modern computing systems and computer-controlled equipment.
+            </p>
+
+        </diV>
+
+
+    </div>
+    <script>
+        var svgwatchlive_functions = document.getElementsByClassName('youtuber_container');
+        var computerimage = document.getElementsByClassName('meaningofthecomputer_container');
+
+        function svgwatchlive_variables(elementname, value) {
+            elementname.style.display = value;
+        }
+
+        function imageof_computer() {
+            computerimage[0].style.display = 'flex';
+            computerimage[0].style.color = 'white';
+        }
+        var buttonback = document.getElementsByClassName('BACKBUTTON');
+
+        function buttonogback() {
+
+        }
+    </script>
+</body>
+
+</html>
